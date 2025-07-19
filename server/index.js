@@ -37,7 +37,7 @@ app.use("/api/activity", activityRoutes);
 
 // Root route - for Render or health check
 app.get("/", (req, res) => {
-  res.send("✅ Task Board Backend is working!");
+  res.json({ message: "API is working fine 🔥" });
 });
 
 server.listen(PORT, () =>
