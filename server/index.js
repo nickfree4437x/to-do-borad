@@ -35,6 +35,11 @@ app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/activity", activityRoutes);
 
+// Root route - for Render or health check
+app.get("/", (req, res) => {
+  res.send("✅ Task Board Backend is working!");
+});
+
 server.listen(PORT, () =>
   console.log(`🚀 Server running on port ${PORT}`)
 );
