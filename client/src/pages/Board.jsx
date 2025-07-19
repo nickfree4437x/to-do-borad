@@ -32,7 +32,7 @@ const Board = () => {
   const fetchTasks = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get("http://localhost:5000/api/tasks", {
+      const { data } = await axios.get("https://to-do-borad.onrender.com/api/tasks", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setTasks(data);
@@ -45,7 +45,7 @@ const Board = () => {
 
   const fetchLogs = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/activity", {
+      const { data } = await axios.get("https://to-do-borad.onrender.com/api/activity", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setLogs(data);
@@ -99,7 +99,7 @@ const Board = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/tasks",
+        "https://to-do-borad.onrender.com/api/tasks",
         { ...taskData },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -114,7 +114,7 @@ const Board = () => {
   const handleSmartAssign = async (taskId) => {
     try {
       const { data } = await axios.put(
-        `http://localhost:5000/api/tasks/${taskId}/smart-assign`,
+        `https://to-do-borad.onrender.com/api/tasks/${taskId}/smart-assign`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -139,7 +139,7 @@ const Board = () => {
 
     try {
       await axios.put(
-        `http://localhost:5000/api/tasks/${draggableId}/status`,
+        `https://to-do-borad.onrender.com/api/tasks/${draggableId}/status`,
         { status: statusMap[destination.droppableId] },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -151,7 +151,7 @@ const Board = () => {
   const handleDelete = async (taskId) => {
     if (!window.confirm("Are you sure you want to delete this task?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${taskId}`, {
+      await axios.delete(`https://to-do-borad.onrender.com/api/tasks/${taskId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success("Task deleted successfully!");
@@ -169,7 +169,7 @@ const Board = () => {
     e.preventDefault();
     try {
       await axios.put(
-        `http://localhost:5000/api/tasks/${editTask._id}`,
+        `https://to-do-borad.onrender.com/api/tasks/${editTask._id}`,
         { ...editTask },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -333,7 +333,7 @@ const Board = () => {
           }}
           onOverwrite={async () => {
             await axios.put(
-              `http://localhost:5000/api/tasks/${editTask._id}`,
+              `https://to-do-borad.onrender.com/api/tasks/${editTask._id}`,
               { ...conflictData.myVersion },
               { headers: { Authorization: `Bearer ${token}` } }
             );
